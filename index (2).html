@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>OSCAR STORE | أوسكار ستور</title>
+<style>
+:root{--bg:#080808;--panel:#121212;--panel2:#191919;--text:#f7f2e7;--muted:#aaa08d;--gold:#f2cf72;--gold2:#c79b37;--line:#302817;--danger:#e58b80}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;transition:.25s}
+body.light{--bg:#f6f2e9;--panel:#fff;--panel2:#f1eadb;--text:#201b12;--muted:#746b5c;--line:#e1d4b8}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+a{color:inherit;text-decoration:none}.topbar{background:#050505;color:#f2cf72;padding:8px 5%;text-align:center;font-size:13px;border-bottom:1px solid #4a3919}
+header{position:sticky;top:0;z-index:20;background:rgba(8,8,8,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:12px 5%}
+body.light header{background:rgba(255,255,255,.94)}
+.nav{max-width:1250px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:12px;font-weight:bold;color:var(--gold);font-size:20px}.brand img{width:62px;height:48px;object-fit:contain;border-radius:6px}.nav-actions{display:flex;gap:8px;align-items:center}.iconbtn,.goldbtn,.outlinebtn{border:1px solid var(--gold2);border-radius:12px;padding:10px 14px;background:transparent;color:var(--gold);font-weight:bold}.goldbtn{background:linear-gradient(135deg,var(--gold),#bd8b2e);color:#171006;border:0}.cart-count{display:inline-grid;place-items:center;background:#fff;color:#111;border-radius:50%;width:21px;height:21px;font-size:12px;margin-right:5px}
+.hero{max-width:1250px;margin:24px auto 20px;padding:0 5%}.hero-card{min-height:310px;border:1px solid #6d5423;border-radius:24px;overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:34px;background:radial-gradient(circle at 15% 25%,#4b3816 0,transparent 35%),linear-gradient(120deg,#17120a,#050505 65%);position:relative}
+.hero-card:after{content:"✦";position:absolute;left:8%;bottom:-35px;font-size:180px;color:#d6ad4b;opacity:.12}.hero-copy{max-width:650px;position:relative;z-index:1}.eyebrow{color:var(--gold);letter-spacing:2px;font-size:13px}.hero h1{font-size:clamp(30px,5vw,54px);margin:12px 0;color:#f5d57f}.hero p{line-height:1.9;color:#ddd0ae}.hero-logo{width:min(34%,310px);max-height:190px;object-fit:contain;border-radius:12px}
+.section{max-width:1250px;margin:28px auto;padding:0 5%}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:17px}.section h2{margin:0;color:var(--gold);font-size:25px}.muted{color:var(--muted);font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.cat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px 10px;text-align:center;transition:.2s;cursor:pointer}.cat:hover,.product:hover{transform:translateY(-3px);border-color:var(--gold2)}.cat .emoji{font-size:30px;display:block;margin-bottom:9px}.cat b{font-size:14px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.toolbar input,.toolbar select,.field input,.field select,.field textarea{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:12px;padding:12px;width:100%;outline:none}.toolbar input{flex:1;min-width:180px}.toolbar select{width:auto;min-width:160px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.product{background:var(--panel);border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.2s;display:flex;flex-direction:column}.product-visual{height:135px;background:linear-gradient(135deg,#292113,#100e0a);display:grid;place-items:center;font-size:54px;color:var(--gold)}body.light .product-visual{background:linear-gradient(135deg,#f2e7ca,#fff9ed)}.product-info{padding:13px;display:flex;flex-direction:column;gap:8px;flex:1}.product h3{font-size:15px;margin:0}.product .muted{min-height:18px}.product button{margin-top:auto;width:100%}.ask{font-size:12px;color:var(--gold)}
+.empty{padding:30px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--line);border-radius:16px;grid-column:1/-1}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.info-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;line-height:1.9}.info-card h3{color:var(--gold);margin-top:0}
+footer{margin-top:45px;padding:30px 5%;background:#050505;color:#c9b98e;text-align:center;border-top:1px solid #493719}.footer-logo{width:130px;max-height:70px;object-fit:contain}
+.overlay{position:fixed;inset:0;background:#0009;z-index:40;display:none}.overlay.show{display:block}.drawer{position:fixed;z-index:41;top:0;bottom:0;left:0;width:min(440px,100%);background:var(--panel);border-right:1px solid var(--line);padding:20px;transform:translateX(-105%);transition:.25s;overflow:auto}.drawer.show{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;align-items:center}.drawer h2{color:var(--gold)}.cart-row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.qty{display:flex;align-items:center;gap:8px}.qty button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:7px;padding:4px 9px}.cart-total{font-size:13px;color:var(--muted);margin:15px 0}.checkout{display:grid;gap:10px;margin-top:15px}.field label{display:block;margin:0 0 6px;color:var(--muted);font-size:13px}.field textarea{min-height:75px;resize:vertical}.radio-line{display:flex;gap:12px;flex-wrap:wrap;background:var(--panel2);padding:10px;border-radius:10px}.radio-line label{font-size:13px}.close{border:0;background:transparent;color:var(--text);font-size:25px}.notice{font-size:12px;color:var(--muted);line-height:1.7}
+@media(max-width:850px){.products{grid-template-columns:repeat(3,1fr)}.categories{grid-template-columns:repeat(3,1fr)}.hero-logo{width:28%}}
+@media(max-width:580px){header{padding:10px 4%}.brand{font-size:15px}.brand img{width:48px;height:38px}.nav{gap:6px}.iconbtn,.goldbtn{padding:9px 10px;font-size:12px}.hero{padding:0 4%}.hero-card{padding:22px;min-height:260px}.hero-logo{display:none}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr);gap:9px}.product-visual{height:105px;font-size:42px}.product-info{padding:10px}.product h3{font-size:13px}.section{padding:0 4%}.info-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="topbar">أهلاً بيك في OSCAR STORE ✦ كل احتياجات بيتك في مكان واحد</div>
+<header><div class="nav">
+  <a class="brand" href="#"><img src="oscar-logo.jpg" alt="OSCAR STORE"><span>OSCAR STORE</span></a>
+  <div class="nav-actions"><button class="iconbtn" id="themeBtn" title="تغيير الوضع">☼</button><button class="goldbtn" id="cartBtn">السلة <span class="cart-count" id="cartCount">0</span></button></div>
+</div></header>
+<main>
+<section class="hero"><div class="hero-card">
+  <div class="hero-copy"><div class="eyebrow">WELCOME TO OSCAR STORE</div><h1>اختار اللي يعجبك… والباقي علينا</h1><p>أدوات مطبخ، ديكورات، مكرميات، مستلزمات رمضان وأدوات مدرسية. تصفح الأقسام واجمع طلبك بسهولة.</p><button class="goldbtn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">تسوق الآن ←</button></div>
+  <img class="hero-logo" src="oscar-logo.jpg" alt="Oscar Store">
+</div></section>
+<section class="section"><div class="section-head"><div><h2>تسوق حسب القسم</h2><div class="muted">اختار القسم اللي بتدور عليه</div></div></div><div class="categories" id="categories"></div></section>
+<section class="section" id="shop"><div class="section-head"><div><h2 id="productsTitle">كل المنتجات</h2><div class="muted">الأسعار غير معروضة — استفسر عنها عند تأكيد الطلب</div></div></div>
+<div class="toolbar"><input id="search" placeholder="ابحث عن منتج..."><select id="categoryFilter"><option value="all">كل الأقسام</option></select><select id="sort"><option value="default">ترتيب المنتجات</option><option value="az">الاسم من أ إلى ي</option></select></div>
+<div class="products" id="products"></div></section>
+<section class="section"><div class="info-grid">
+<div class="info-card"><h3>📍 عنوان المحل</h3><p>بورسعيد — منطقة سعد زغلول والمغرب، شارع الثلاثيني، ثالث شارع بعد محمد علي.</p><a class="goldbtn" style="display:inline-block" target="_blank" rel="noopener" href="https://www.bing.com/maps?cp=31.27197~32.28541&lvl=17">افتح موقع المحل على الخريطة</a></div>
+<div class="info-card"><h3>📦 جملة وقطاعي</h3><p>اختار نوع طلبك عند إتمام الشراء، وطلبك هيتبعت للرقم المخصص ليه على واتساب.</p><p>الجملة: <b dir="ltr">01214146340</b><br>القطاعي: <b dir="ltr">01214146335</b></p></div>
+</div></section>
+</main>
+<footer><img class="footer-logo" src="oscar-logo.jpg" alt="OSCAR STORE"><p>OSCAR STORE — شكراً لثقتكم</p></footer>
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer"><div class="drawer-head"><h2>سلة مشترياتك</h2><button class="close" id="closeCart">×</button></div>
+<div id="cartItems"></div><div class="cart-total">عدد القطع: <b id="totalQty">0</b> — لا يتم عرض الأسعار على الموقع.</div>
+<form class="checkout" id="checkout">
+<div class="field"><label>نوع الطلب</label><div class="radio-line"><label><input type="radio" name="orderType" value="قطاعي" checked> قطاعي</label><label><input type="radio" name="orderType" value="جملة"> جملة</label></div></div>
+<div class="field"><label>الاسم بالكامل</label><input id="customerName" required placeholder="اكتب اسمك"></div>
+<div class="field"><label>رقم الهاتف</label><input id="customerPhone" required inputmode="tel" placeholder="رقم للتواصل"></div>
+<div class="field"><label>العنوان (مطلوب للمندوب)</label><textarea id="customerAddress" placeholder="المحافظة والمنطقة والشارع والعلامة المميزة"></textarea></div>
+<div class="field"><label>طريقة الدفع</label><div class="radio-line"><label><input type="radio" name="payment" value="إنستا باي" checked> إنستا باي</label><label><input type="radio" name="payment" value="كاش"> كاش</label></div></div>
+<div class="field"><label>طريقة الاستلام</label><div class="radio-line"><label><input type="radio" name="delivery" value="مندوب" checked> مندوب</label><label><input type="radio" name="delivery" value="استلام من المحل"> هستلم من المحل</label></div></div>
+<div class="field"><label>ملاحظات إضافية (اختياري)</label><textarea id="notes" placeholder="أي تفاصيل إضافية عن الطلب"></textarea></div>
+<button class="goldbtn" type="submit">إرسال الطلب على واتساب</button>
+<div class="notice">ملحوظة: تأكيد السعر وتفاصيل التوصيل بيكون بالتواصل مع المحل على واتساب.</div>
+</form></aside>
+<script>
+const groups=[
+{name:"أدوات المطبخ",icon:"🍴",items:["طقم معالق","شوك","سكاكين","مضرب بيض","مضرب نسكافيه","قوالب سيليكون","طقم كاسات","كوبايات","مجات","مجات حرارية","فوط مطبخ","مقشرة بطاطس","مقصات مطبخ","مصافي","بخاخ زيت","علب حفظ الطعام","قوالب كيك"]},
+{name:"ديكور الانتريه",icon:"🏺",items:["فازات","بونبونيرة","طقم شمعدان","صينية ديكور","علب مناديل","ساعات حائط","طبق مكسرات","حامل أدوار","تحف وديكورات متنوعة"]},
+{name:"المكرميات",icon:"🧶",items:["مكرمية حائط","مكرمية حائط دائرية","مكرمية حائط طويلة","مكرمية نبات","مكرمية أصص","مكرميات بأشكال متنوعة"]},
+{name:"ديكورات رمضان والأنوار",icon:"🌙",items:["فانوس استانلس","فانوس بلاستيك","فانوس قديم","سجاد صلاة","كورنر الصلاة","شيالة رمضان","فوانيس 3 قطع مفرغة","ستارة نور نجوم","ستارة نور فوانيس","ستارة نور هلال","ستارة نور ديزني","حبل زينة بأطوال مختلفة","شراشيب رمضان","زينة رمضان متنوعة"]},
+{name:"الأدوات المدرسية",icon:"🎒",items:["لانش بوكس","أقلام","زمزمية","مستلزمات مدرسية متنوعة"]}
+];
+const products=groups.flatMap((g,gi)=>g.items.map((name,i)=>({id:gi+"-"+i,name,group:g.name,icon:g.icon})));
+let cart={};let activeGroup="all";
+const $=id=>document.getElementById(id);
+function renderCategories(){
+ $("categories").innerHTML=groups.map((g,i)=>`<div class="cat" onclick="chooseGroup('${g.name}')"><span class="emoji">${g.icon}</span><b>${g.name}</b></div>`).join("");
+ $("categoryFilter").innerHTML='<option value="all">كل الأقسام</option>'+groups.map(g=>`<option>${g.name}</option>`).join("");
+}
+function chooseGroup(name){activeGroup=name;$("categoryFilter").value=name;$("productsTitle").textContent=name;renderProducts();$("shop").scrollIntoView({behavior:"smooth"});}
+function renderProducts(){
+ let q=$("search").value.trim().toLowerCase(),g=$("categoryFilter").value;
+ let list=products.filter(p=>(g==="all"||p.group===g)&&(!q||p.name.toLowerCase().includes(q)||p.group.toLowerCase().includes(q)));
+ if($("sort").value==="az")list.sort((a,b)=>a.name.localeCompare(b.name,"ar"));
+ $("products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="product-visual">${p.icon}</div><div class="product-info"><h3>${p.name}</h3><div class="muted">${p.group}</div><div class="ask">السعر عند الاستفسار</div><button class="goldbtn" onclick="addToCart('${p.id}')">أضف للسلة +</button></div></article>`).join(""):'<div class="empty">مفيش منتجات مطابقة للبحث ده.</div>';
+ $("productsTitle").textContent=g==="all"?"كل المنتجات":g;
+}
+function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();openCart();}
+function changeQty(id,n){cart[id]=(cart[id]||0)+n;if(cart[id]<=0)delete cart[id];renderCart();}
+function renderCart(){
+ let entries=Object.entries(cart),qty=entries.reduce((s,[id,n])=>s+n,0);
+ $("cartCount").textContent=qty;$("totalQty").textContent=qty;
+ $("cartItems").innerHTML=entries.length?entries.map(([id,n])=>{let p=products.find(x=>x.id===id);return `<div class="cart-row"><div><b>${p.name}</b><div class="muted">${p.group}</div></div><div class="qty"><button type="button" onclick="changeQty('${id}',-1)">−</button><b>${n}</b><button type="button" onclick="changeQty('${id}',1)">+</button></div></div>`}).join(""):'<div class="empty">السلة لسه فاضية. اختار المنتجات اللي محتاجها.</div>';
+}
+function openCart(){$("overlay").classList.add("show");$("drawer").classList.add("show")}
+function closeCart(){$("overlay").classList.remove("show");$("drawer").classList.remove("show")}
+$("cartBtn").onclick=openCart;$("closeCart").onclick=closeCart;$("overlay").onclick=closeCart;
+$("search").addEventListener("input",renderProducts);$("categoryFilter").addEventListener("change",renderProducts);$("sort").addEventListener("change",renderProducts);
+$("themeBtn").onclick=()=>{document.body.classList.toggle("light");$("themeBtn").textContent=document.body.classList.contains("light")?"☾":"☼"};
+$("checkout").addEventListener("submit",e=>{
+ e.preventDefault();let entries=Object.entries(cart);if(!entries.length){alert("ضيف منتجات للسلة الأول.");return;}
+ let type=document.querySelector('input[name="orderType"]:checked').value;
+ let payment=document.querySelector('input[name="payment"]:checked').value;
+ let delivery=document.querySelector('input[name="delivery"]:checked').value;
+ let lines=entries.map(([id,n])=>{let p=products.find(x=>x.id===id);return `• ${p.name} — الكمية: ${n}`}).join("\n");
+ let msg=`طلب جديد من OSCAR STORE\n\nنوع الطلب: ${type}\nالاسم: ${$("customerName").value}\nرقم الهاتف: ${$("customerPhone").value}\nالعنوان: ${$("customerAddress").value||"استلام من المحل"}\nطريقة الدفع: ${payment}\nطريقة الاستلام: ${delivery}\n\nالمنتجات:\n${lines}\n\nعدد القطع: ${entries.reduce((s,[id,n])=>s+n,0)}\nملاحظات: ${$("notes").value||"لا يوجد"}\n\nبرجاء تأكيد الأسعار والتوصيل.";
+ let number=type==="جملة"?"201214146340":"201214146335";
+ window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`,"_blank");
+});
+renderCategories();renderProducts();renderCart();
+</script>
+</body></html>
